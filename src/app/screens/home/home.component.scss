@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+.main-home-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    padding: 20px 0 0 0;
+    box-sizing: border-box;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: "Roboto Flex", sans-serif;
+    font-optical-sizing: auto;
+    background-image: url('../../../assets/background.png') !important;
+
+    .ion-text-title {
+        width: 100%;
+        display: flex;
+        padding: 0 20px;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+
+        ion-icon {
+            font-size: 2.5rem;
+            color: #2d2b2a;
+        }
+
+        .ion-text-title-1 {
+            div {
+                font-size: 2.5rem;
+            }
+
+            div:nth-child(1) {
+                font-weight: 600;
+                color: #000000d7;
+                margin-bottom: -5px;
+            }
+
+            div:nth-child(2) {
+                color: #000000b6;
+                width: 75px;
+                font-size: 2rem;
+                font-weight: 500;
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 5px;
+                    background-color: #fffc57;
+                }
+            }
+        }
+    }
+
+    .ion-text-search-conteiner {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        display: flex;
+        height: 45vh;
+        align-items: center;
+        justify-content: center;
+        transform: translate(-50%, -50%);
+
+        ion-item {
+            width: 100%;
+            border-radius: 100px;
+        }
+
+        .ion-button {
+            padding: 5px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .5rem;
+            border-radius: 100px;
+            background-color: rgb(26, 26, 26);
+
+            &:active {
+                background-color: rgba(26, 26, 26, 0.582);
+            }
+        }
+
+        .ion-text-search {
+            width: 90%;
+            z-index: 4;
+            height: 100%;
+            display: flex;
+            padding: 0 20px;
+            border-radius: 30px;
+            align-items: center;
+            flex-direction: column;
+            box-sizing: border-box;
+            background-color: #ebff57;
+            justify-content: space-around;
+
+
+            .ion-text-search-title {
+                width: 100%;
+                display: flex;
+                color: #2c2b2a;
+                font-weight: 600;
+                font-size: 1.2rem;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -10px;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #2d2b2a;
+                }
+            }
+
+            ion-icon:nth-child(2) {
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 100px;
+                background-color: rgba(0, 0, 0, 0.103);
+            }
+        }
+
+        .background-container-1,
+        .background-container-2,
+        .background-container-3 {
+            position: absolute;
+            border-radius: 30px;
+            height: 30vh;
+        }
+
+        .background-container-1 {
+            width: 80%;
+            background-color: #2d2b2a;
+            top: -40px;
+            z-index: 3;
+        }
+
+        .background-container-2 {
+            width: 70%;
+            background-color: #565553;
+            top: -60px;
+            z-index: 2;
+        }
+
+        .background-container-3 {
+            width: 60%;
+            background-color: #2d2c2a6e;
+            top: -80px;
+            z-index: 1;
+        }
+    }
+}

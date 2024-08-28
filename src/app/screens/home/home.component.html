@@ -1,0 +1,124 @@
+<div class="main-home-container">
+  <div class="ion-text-title">
+    <div class="ion-text-title-1">
+      <div>Consulta</div>
+      <div>CNPJ</div>
+    </div>
+    <ion-icon name="filter-outline"></ion-icon>
+  </div>
+  <div style="position: relative;" class="ion-text-search-conteiner">
+    <div class="ion-text-search">
+      <div class="ion-text-search-title">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <ion-icon name="business-outline" style="font-size: 1.8rem;"></ion-icon>
+          <div style="color: rgba(0, 0, 0, 0.616); font-weight: 500; font-size: 1.8rem">Consultar</div>
+        </div>
+        <ion-icon name="chevron-forward-outline" style="font-size: 1.8rem;"></ion-icon>
+      </div>
+      <ion-item>
+        <ion-input id="cnpjInput" type="tel" placeholder="35.214.943/0001-64" maxlength="18"
+          (ionInput)="applyCnpjMask($event)"></ion-input>
+        <div class="ion-button" (click)="fetchCnpjData()">
+          <ion-icon name="search" style="font-size: 1.5rem;"></ion-icon>
+        </div>
+      </ion-item>
+      <div>
+      </div>
+    </div>
+    <div class="background-container-1"></div>
+    <div class="background-container-2"></div>
+    <div class="background-container-3"></div>
+  </div>
+</div>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Detalhes do CNPJ</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Fechar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <div *ngIf="cnpjInfo">
+        <h2 style="font-size: 1rem; font-weight: 700; margin-bottom: 20px;">{{ cnpjInfo.razao_social }}</h2>
+        <div style="margin-bottom: 20px;" *if="cnpjInfo.cnpj != null">
+          <div>
+            <strong>CNPJ:</strong>
+          </div>
+          <div>{{ cnpjInfo.cnpj }}</div>
+        </div>
+        <div style="margin-bottom: 20px;" *if="cnpjInfo.nome_fantasia != null">
+          <div>
+            <strong>Nome Fantasia:</strong>
+          </div>
+          <div>{{ cnpjInfo.nome_fantasia }}</div>
+        </div>
+        <div style="margin-bottom: 20px;" *if="cnpjInfo.natureza_juridica != null">
+          <div>
+            <strong>Natureza Jurídica:</strong>
+          </div>
+          <div>{{ cnpjInfo.natureza_juridica }}</div>
+        </div>
+        <div style="margin-bottom: 20px;" *if="cnpjInfo.data_inicio_atividade != null">
+          <div>
+            <strong>Data de Início de Atividade:</strong>
+          </div>
+          <div>{{ cnpjInfo.data_inicio_atividade }}</div>
+        </div>
+        <div style="margin-bottom: 20px;" *if="cnpjInfo.ddd_telefone_1 != null">
+          <div>
+            <strong>Telefone:</strong>
+          </div>
+          <div>{{ cnpjInfo.ddd_telefone_1 }}</div>
+        </div>
+        <div style="margin-bottom: 20px;" *if="cnpjInfo.ddd_fax  != null">
+          <div><strong>Fax:</strong></div>
+          <div>{{ cnpjInfo.ddd_fax }}</div>
+        </div>
+        <div>
+          <div style="margin-bottom: 20px;" *if="cnpjInfo.capital_social != null">
+            <strong>Capital Social:</strong>
+          </div>
+          <div>{{ cnpjInfo.capital_social | currency }}</div>
+        </div>
+        <div>
+          <div style="margin-bottom: 20px;">
+            <strong>Endereço:</strong>
+          </div>
+          <div style="display: flex; flex-direction: column; gap:10px; margin-bottom: 10px;">
+            <div style="display: flex; gap: 10px">
+              <div style="font-size: 1rem;">LOGRADOURO:</div>
+              <div style="font-size: .9rem;">{{ cnpjInfo.endereco.logradouro }}</div>
+            </div>
+            <div style="display: flex; gap: 10px">
+              <div style="font-size: 1rem;">NÚMERO:</div>
+              <div style="font-size: .9rem;">{{ cnpjInfo.endereco.numero }}</div>
+            </div>
+            <div style="display: flex; gap: 10px">
+              <div style="font-size: 1rem;">COMPLEMENTE:</div>
+              <div style="font-size: .9rem;">{{ cnpjInfo.endereco.complemento }}</div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap:10px">
+            <div style="display: flex; gap: 10px">
+              <div style="font-size: 1rem;">BAIRRO:</div>
+              <div style="font-size: .9rem;"> {{ cnpjInfo.endereco.bairro }}</div>
+            </div>
+            <div style="display: flex; gap: 10px">
+              <div style="font-size: 1rem;">CIDADE/ESTADO:</div>
+              <div style="font-size: .9rem;">{{ cnpjInfo.endereco.municipio }} - {{
+                cnpjInfo.endereco.uf }}</div>
+            </div>
+          </div>
+          <div>CEP: {{ cnpjInfo.endereco.cep }}</div>
+        </div>
+      </div>
+      <div *ngIf="!cnpjInfo">
+        <div>Nenhum dado disponível.</div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

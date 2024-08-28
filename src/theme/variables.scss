@@ -1,2 +1,27 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root {
+    --ion-item-border-color: var(--ion-background-color-step-200);
+    --ion-background-color: #f1f1f1;
+    --ion-toolbar-background: var(--ion-background-color);
+    --ion-item-background: #fff;
+}
+
+:root.ios {
+    --ion-background-color: #ffffff;
+    --ion-toolbar-background: var(--ion-background-color);
+    --ion-item-background: #fff;
+}
+
+:root.md {
+    --ion-background-color: #fff;
+    --ion-toolbar-background: var(--ion-background-color);
+    --ion-item-background: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    :root.ios,
+    :root.md {
+        --ion-background-color: #252525;
+        --ion-item-background: #1c1c1d;
+    }
+}
